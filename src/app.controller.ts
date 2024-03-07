@@ -2,8 +2,10 @@ import { Controller, Get, Param, Post, Body, Put, Delete, UseGuards } from '@nes
 import { UserService } from './user.service';
 import { PostService } from './post.service';
 import { User as UserModel, Post as PostModel } from '@prisma/client';
+import { ApiKeyGuard } from 'src/apiguard.service';
 
 @Controller()
+@UseGuards(ApiKeyGuard)
 export class AppController {
   constructor(
     private readonly userService: UserService,
